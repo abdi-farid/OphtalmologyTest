@@ -1,0 +1,411 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    
+  }
+  
+  .fond { 
+  
+  background-image: url(fond-enfant.png);
+  
+  }
+  .fond2{
+  background-image: url(fond-droit.png);	
+  }
+  
+  
+  .header{
+  
+      height:200px;
+      text-align:left;
+      position:relative;
+  }
+  .header img{
+      width:20%;
+      position:absolute;
+      top:10px;
+      right:40px;	
+  }
+  
+  .header p {
+      position:absolute;
+       bottom:10px;
+       left: 60px;
+       
+  }
+  
+  .header a{ 
+  
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 10px;
+    font-size:30px;
+    font-weight:bold;
+    color:black;
+    }
+  
+  .image{
+      height:600px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+         text-align:center;
+      
+  }
+  
+  .left{
+      width:49%;
+      padding:50px 10px 10px 20px;
+      margin:100px 10px 10px 40px;
+  
+  }
+  
+  .right{
+      width:50%;
+      padding:50px 10px 10px 20px;
+      margin:100px 10px 10px 40px;
+  }
+  .left p{
+      
+  padding:20px;		
+  }
+  .right p{
+      
+  padding:20px;	
+      
+  }
+  
+  
+  /*page2*/
+  
+  .page2 {
+   display:inline-block;
+    
+    width: 100%;
+    text-align:center;
+  }
+  .page2 span{
+      text-decoration:underline;
+  }
+  .page2 img{
+      width:30%;
+      margin-top: 25px;
+      margin-bottom:25px;
+      
+  }
+  .page2 a{
+      text-decoration:none;
+  }
+  
+  .button {
+    display:block;
+    background-color:#de4301;
+    font-size: 14px;
+    color: white;
+    text-align:center;
+    border: none;
+    padding:10px;
+    text-decoration: none;
+    margin: auto;
+    border-radius:10px;
+    
+  }
+  .remarque{
+      text-align:left;
+      padding-left:80px;
+      padding-top:40px;
+      margin-bottom:10px;
+  }
+  .remarque p{
+      font-size:14px;
+  }
+  
+  #myProgress {
+    width:50%;
+    background-color: white;
+    border-radius: 20px;
+    border:2px solid #333;
+    display: inline-block;
+    margin:30px;
+  }
+  
+  #myBar {
+    width: 5%;
+    height: 15px;
+    background-color:#00abe9;
+   border-radius: 20px;
+  
+  }
+  
+  #remarque{
+  padding-left:60px;		
+  }
+  /*page5*/
+  .container{
+      width:80%;
+      height:580px;
+      margin:0 auto;
+  display:flex;
+  align-items:center;
+  flex-direction:row;
+  justify-content:center;
+  
+  
+  
+  }
+  
+  .droite{
+  width:25%;	
+  text-align:left;
+  padding:30px 20px 10px 20px ;
+  margin:20px;
+  }
+  .droite img{
+      width:15%;
+      padding-left:30px;
+  
+  }
+  
+  .chemin¨¦e{	
+  width:45%;
+  display: inline-block;
+  text-align:center;
+  padding:40px;
+  position:relative;	
+  
+  margin-right:30px;
+  }
+  
+  .chemin¨¦e img{
+      
+      display:inline-block;
+      margin:0 auto;
+  }
+  hr { display: block; 
+      border-top: 2px solid blue;
+      margin: 1em 0; padding: 0; }
+  .vertical-line{
+          border-left: 2px solid #000;
+          display: inline-block;
+          height: 350px;
+          margin: 0 20px;
+          
+  }
+  .chemin¨¦e a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius:10px;
+    
+  }
+  .hover:hover {
+    background-color:#00abe9;
+    color: white;
+  }
+  /*oppacit¨¦ de la chemin¨¦*/
+  /*
+  .chemin¨¦e img{
+  
+       z-index:10;
+    opacity:0.2;
+    filter:alpha(opacity=50);
+  }
+  */
+  
+  
+  .gauche-button{
+    background-color:white;
+    color: blue;
+    font-size:20px;
+    border:3px solid blue;
+  display:inline-block;
+  margin-right:120px;
+   
+  }
+  
+  .droite-button {
+    background-color: white;
+    color:blue;
+    font-size:20px;
+    border:3px solid blue;
+    display:inline-block;
+   margin-left:120px;
+  }
+  
+  .haut{
+    background-color: white;
+    color:blue;
+    font-size:20px;
+    border:3px solid blue;
+    margin-bottom:40px;
+    margin-right:20px;
+    
+  }
+  .bas{
+   background-color: white;
+    color:blue;
+    font-size:20px;
+    border:3px solid blue;
+  margin-top:60px;
+  
+    
+  }
+  
+  
+  
+  
+  
+  .progression{
+      width:100%;
+  display:inline-block;
+  flex-direction:column;
+  padding-right:20px;
+  
+  
+  
+  }
+  .progression img{
+      width:15%;
+      padding-bottom:20px;
+      display:inline-block;
+      padding-left:10px;
+  }
+  
+  
+  
+  
+  
+  /*
+  .chemin¨¦e
+  {
+    display: inline-block;
+    padding: 50px;
+    border-radius: 3px;
+    
+  }
+  .chemin¨¦e img{
+  }
+  
+  */
+  
+  
+  
+  
+  .logogauche{
+      width:20%;
+      position:absolute;
+      top:10px;
+      left:60px;	
+      margin-bottom:25px;
+  }
+  #question{
+  text-align:left;
+  padding-bottom:40px;
+  
+  
+  }
+  
+  
+  /*page6*/
+  input[type=text] {
+    width: 30%;
+    padding: 10px 5px;
+    margin-top:40px;
+    box-sizing: border-box;
+    border: 3px solid blue;
+    border-radius:15px;
+    color:gray;
+    ;
+  }
+  
+  .valide{
+  width:100%;
+  text-align:center;
+  padding-left:20px;
+  padding-right:20px;
+  }
+  
+  
+  .checkbox{
+      margin-top:20px;
+      margin-bottom:10px;
+  }
+  .checkbox input,.checkbox label{
+      display:inline-block;
+      vertical-align:middle;	
+  }
+  .checkbox label{margin-right:20px;}
+  .checkbox input{margin-right:10px;border-radius:20px;}
+  
+  /*page resultat*/
+  .logocentre
+  {
+      width:20%;
+      position:absolute;
+      top:10%;
+      left:38%;	
+      margin-bottom:25px;
+  }
+  #titre{
+      text-align:center;
+      font-size:20px;
+  }
+  section{
+  
+  width:80%;
+      
+  }
+  
+  
+  #myProgress1{
+    width:90%;
+    background-color: white;
+    border-radius: 20px;
+    border:2px solid #333;
+    display: block;
+    margin:25px;
+  }
+  
+  #myBar1 {
+    width: 90%;
+    height: 15px;
+    background-color:#0000FF;
+   border-radius: 20px;
+  
+  }
+  
+  #myBar2 {
+    width: 80%;
+    height: 15px;
+    background-color:#008B8B;
+   border-radius: 20px;
+  
+  }
+  
+  #myBar3 {
+    width: 80%;
+    height: 15px;
+    background-color:#00abe9;
+   border-radius: 20px;
+  
+  }
+  #myBar4{
+    width: 70%;
+    height: 15px;
+    background-color:#32CD32;
+   border-radius: 20px;
+  
+  }
+  .pourcentage{
+      text-align:right;
+      display:i
+      
+  }
+  .paragraphe{
+      width:90%;
+      padding-top:20px;
+      padding-left:20px;
+      padding-right:30px;
+      margin:20px;
+      
+  }

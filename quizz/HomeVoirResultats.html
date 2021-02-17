@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>quizz</title>
+        <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+
+        <script type="text/javascript">
+            function commencer(){
+                let params = new URLSearchParams(document.location.search.substring(1));
+            if (params != null) {
+                let valbarre = parseInt(params.get("barre"));
+                document.getElementById('barre').value = valbarre;
+               }
+            }
+
+            function getPar(){
+                    let params = new URLSearchParams(document.location.search.substring(1));
+                if (params != null) {
+                    let AV = parseInt(params.get("av"));
+                    let CON = parseInt(params.get("con"));
+                    let COUL = parseInt(params.get("couleur"));
+                    let VP = parseInt(params.get("vp"));
+                    let valbarre = parseInt(params.get("barre"));
+                    document.getElementById('barre').value = valbarre;
+               }
+                }
+
+                function voirResultat(){
+                    let params = new URLSearchParams(document.location.search.substring(1));
+                    if (params != null) {
+                        let AV = parseInt(params.get("av"));
+                        let CON = parseInt(params.get("con"));
+                        let COUL = parseInt(params.get("couleur"));
+                        let VP = parseInt(params.get("vp"));
+
+                        document.location.href="./VoirResultats.html?av="+AV+"&con="+CON+"&couleur="+COUL+"&vp="+VP;
+                    }
+                }
+        </script>
+    </head>
+    <body onload="commencer();getPar();">
+        <!--contenaire général-->
+        <div>
+            <center>
+            <h2 class="title">Résultats</h2>
+            
+            <img src="imageVoirResultats.PNG" width="400" height="300" class="img img-fluid"><br><br>
+            <button class="btn btn-danger col-2" onclick="voirResultat()">Voir mes résultats</button><br><br>
+            
+            <div class="progress" style="width: 70%;">
+                    <progress id="barre" value="1" class="col-12" max="13"></progress>
+            </div><br>
+            
+            
+            
+        </center><br>
+        <strong >N'oubliez pas qu'un enfant doit consulter un ophtamologue tout les ans.</strong><br>
+        <strong>Nous vous rappelons que ce test en ligne ne peut en aucun cas remplacer une consultation chez un professionel</strong>
+        </div>
+    </body>
+</html>

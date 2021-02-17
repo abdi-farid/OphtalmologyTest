@@ -1,0 +1,138 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>quizz</title>
+        <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="styleRadio.css">
+
+        <script type="text/javascript">
+                // tableau des images
+            var imgVoirMieux=["imgVoirMieux/1.png","imgVoirMieux/2.png","imgVoirMieux/3.png","imgVoirMieux/4.png","imgVoirMieux/5.png"]
+
+            var VP = 0;
+
+            function start(){
+                var r = Math.floor((Math.random() * 5));
+                var x= document.getElementById('image');
+                x.setAttribute("src",imgVoirMieux[r]);
+            }
+
+                function getPar(){
+                    let params = new URLSearchParams(document.location.search.substring(1));
+                if (params != null) {
+                    let AV = parseInt(params.get("av"));
+                    let CON = parseInt(params.get("con"));
+                    let COUL = parseInt(params.get("couleur"));
+                    let VP = parseInt(params.get("vp"));
+                    let valbarre = parseInt(params.get("barre"));
+                    document.getElementById('barre').value = valbarre;
+               }
+                }
+
+
+
+                    // fonction qui gère les evenements
+                function jeVoisMieux(){
+
+                    var b = document.getElementById('barre').value;
+
+                    var idImage = document.getElementById('image');
+                    var srcImage = idImage.getAttribute("src");
+
+                        // garder le score de vision de près 
+                    if(document.querySelector('#pareil').checked == true){
+                        VP = VP+1;
+                    }
+
+                   
+                        // si trois tests sont faits 
+                    if(b==26){
+                        let params = new URLSearchParams(document.location.search.substring(1));
+                        let AV = parseInt(params.get("av"));
+                        let CON = parseInt(params.get("con"));
+                        let COUL = parseInt(params.get("couleur"));
+
+                        // Redirection vers la 4 eme partie 
+                        document.location.href="./HomeVoirResultats.html?av="+AV+"&con="+CON+"&couleur="+COUL+"&vp="+VP+"&barre="+b;
+                    }
+                       
+
+                    var at = document.getElementById('barre');
+                    b = b+1;
+                    at.setAttribute("value",b);
+    
+                    
+                    start();                    
+                }
+        </script>
+    </head>
+    <body onload="start(); getPar();">
+        <div class="container">
+
+            <!-- partie gauche -->
+
+            <div class="" style="float: left; width: 60%; margin-top: 10%;">
+                <h5><u>Consigne</u>: Selectionnez le coté que vous voyez le mieux </h5><br>
+                
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width: 10%; text-align: center;"></td>
+                        <td style="width: 80%; text-align: center;height: 200px;">
+                            <img id="image" src="" width="200" height="200">
+                        </td>
+                        <td style="width: 10%;text-align: center;"></td>
+                    </tr>
+
+                    <tr>
+                        <td style="width: 10%;"></td>
+
+                        <td style="width: 80%; text-align: center; padding: 2%;" class="col-lg">
+                            <input type="radio" name="choix" id="vert" value="vert" style="margin-left: 2%;">
+                            <label for="vert">Vert</label>
+
+                            <input type="radio" name="choix" id="rouge" value="rouge" style="margin-left: 2%;">
+                            <label for="rouge">Rouge</label>
+
+                            <input type="radio" name="choix" id="pareil" value="pareil" style="margin-left: 2%;">
+                            <label for="pareil">Pareil</label>
+                        </td>
+
+                        <td style="width: 10%;"></td>
+                    </tr>
+
+                    <tr>
+                        <td style="width: 10%;"></td>
+                        <td style="width: 80%; text-align: center;">
+                            <button class="btn btn-danger col-lg-4" onclick="jeVoisMieux()" >Valider</button>
+                        </td>
+                        <td style="width: 10%;"></td>
+                    </tr>
+                </table>
+                <br>
+
+                <div class="progress" style="width: 99%;">
+                    <progress id="barre" value="0" class="col-12" max="26"></progress>
+                </div><br>
+
+                
+            </div>
+
+            <!-- ligne vereticale -->
+            <span style=" float:left; border-left: 2px solid #000;display: inline-block;height: 70%;margin-top: 10%;"></span>
+            
+            <!-- partie droite -->
+            <div class="" style="float: left; width: 38%; margin-top: 15%; margin-left: 0.25%;">
+                <h5>Ce test a pour but de controler votre niveau d'acuité visuelle </h5>
+                <hr style="width: 99%; border-width: 3px; padding: 2%;">
+
+                <h5>Placez vous d'un mètre de l'écran
+                <hr style="width: 99%; border-width: 3px;">
+
+                <h5>Enlever vos lunettes</h5>
+                <hr style="width: 99%; border-width: 3px;">
+
+                <h5>Indiquer la direction de l'objet</h5>
+            </div>
+        </div>
+    </body>
+</html>

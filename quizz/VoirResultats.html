@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>quizz</title>
+        <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+
+        <script type="text/javascript">
+
+            function getPar(){
+                    let params = new URLSearchParams(document.location.search.substring(1));
+                if (params != null) {
+                    let AV = parseInt(params.get("av"));
+                    let CON = parseInt(params.get("con"));
+                    let COUL = parseInt(params.get("couleur"));
+                    let VP = parseInt(params.get("vp"));
+                    document.getElementById('acuite').value = AV;
+                    document.getElementById('contraste').value = CON;
+                    document.getElementById('couleur').value = COUL;
+                    document.getElementById('vp').value = VP;
+
+                    document.getElementById("pourcentAV").innerHTML = AV*100/9+"%";
+                    document.getElementById("pourcentCON").innerHTML = CON*100/9+"%";
+                    document.getElementById("pourcentCOUL").innerHTML = COUL*100/5+"%";
+                    document.getElementById("pourcentVP").innerHTML = VP*100/5+"%";
+               }
+                }
+
+        </script>
+    </head>
+    <body onload="getPar();">
+        <!--contenaire général-->
+        <center>
+        <div style="margin-top: 4%;">
+            <div style="border: solid 2px brown; width: 90%;">
+            <h2 class="title">Résultats</h2>
+            
+            
+            <h5 style="text-align: start;">Acuité visuelle
+                <span style="margin-left: 55%;"></span>
+                <span id="pourcentAV"></span>
+            </h5>
+            <div class="progress" style="width: 70%; position: relative;">
+                    <progress id="acuite" value="1" class="col-12" max="9"></progress>
+            </div><br>
+
+            <h5 style="text-align: left;">Contraste
+                <span style="margin-left: 55%;"></span>
+                <span id="pourcentCON"></span>
+            </h5>
+            <div class="progress" style="width: 70%;">
+                    <progress id="contraste" value="1" class="col-12" max="9"></progress>
+            </div><br>
+
+            <h5 style="text-align: left;">Couleur
+                <span style="margin-left: 55%;"></span>
+                <span id="pourcentCOUL"></span>
+            </h5>
+            <div class="progress" style="width: 70%;">
+                    <progress id="couleur" value="1" class="col-12" max="5"></progress>
+            </div><br>
+
+            <h5 style="text-align: left;">Vision de près
+                <span style="margin-left: 55%;"></span>
+                <span id="pourcentVP"></span>
+            </h5>
+            <div class="progress" style="width: 70%;">
+                    <progress id="vp" value="1" class="col-12" max="5"></progress>
+            </div><br>
+            </div>
+            
+
+        <strong >N'oubliez pas qu'un enfant doit consulter un ophtamologue tout les ans.</strong><br>
+        <strong>Nous vous rappelons que ce test en ligne ne peut en aucun cas remplacer une consultation chez un professionel</strong>
+        </div>
+    </center>
+    </body>
+</html>

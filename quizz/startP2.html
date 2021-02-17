@@ -1,0 +1,153 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>quizz</title>
+        <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+
+        <script type="text/javascript">
+            var w = 200;
+            var h = 200;
+            var contraste = 0;
+            var opacite = 1;
+
+            function start(){
+                    // liste des noms des images 
+                var cheminee = ["imgMaison/haut.PNG","imgMaison/droite.PNG","imgMaison/bas.PNG","imgMaison/gauche.PNG"];
+
+                    // selectionner aléatoirement une image 
+                var r = Math.floor((Math.random() * 4));
+                var x= document.getElementById('image');
+                x.setAttribute("src",cheminee[r]);
+                }
+
+                function getPar(){
+                    let params = new URLSearchParams(document.location.search.substring(1));
+                if (params != null) {
+                    let AV = parseInt(params.get("av"));
+                    let CON = parseInt(params.get("con"));
+                    let COUL = parseInt(params.get("couleur"));
+                    let VP = parseInt(params.get("vp"));
+                    let valbarre = parseInt(params.get("barre"));
+                    document.getElementById('barre').value = valbarre;
+               }
+                }
+
+                    // fonction qui gère les evenements
+                function barre(element){
+                        // changer width et height de l'image à chaque clique
+                    w = w/1.2; h = h/1.2;
+
+                        // 
+                    var v = document.getElementById('barre').value;
+
+                    // garder l'acuité visuelle 
+                    let av = document.getElementById('barre').value;
+
+                    // on précise 10 test poour cette partie 
+                    // on peut changer if v == 5 pour 5 tests 
+                    if (v == 18) {
+                        document.getElementById("haut").disabled = true;
+                        document.getElementById("gauche").disabled = true;
+                        document.getElementById("droite").disabled = true;
+                        document.getElementById("bas").disabled = true;
+
+
+                        let params = new URLSearchParams(document.location.search.substring(1));
+                        let AV = parseInt(params.get("av"));
+                        let b = document.getElementById('barre').value;
+                        let CON = b-AV;
+
+                        // Redirection vers la 3 eme partie 
+                        document.location.href="./HomePartieTrois.html?av="+AV+"&con="+contraste+"&couleur=0&vp=0&barre="+b;
+                    }
+                    var at = document.getElementById('barre');
+                    v = v+1;
+                    at.setAttribute("value",v);
+
+                    var x= document.getElementById('image');
+
+                    // changer l opacité
+                    opacite = opacite-0.1;
+                    x.style["opacity"]= opacite;
+
+                    x.setAttribute("width",w);
+                    x.setAttribute("height",h);
+
+                    var sour = x.getAttribute("src");
+                    if (element== sour) { contraste = contraste+1;}
+                    start();
+                    
+                }
+        </script>
+    </head>
+    <body onload="start(); getPar();">
+        <div class="container">
+
+            <!-- partie gauche -->
+            <div class="" style="float: left; width: 60%; margin-top: 10%;">
+                <h5><u>Consigne</u>: Indiquer la direction de la cheminée de la maison</h5><br>
+                
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width: 10%;"></td>
+
+                        <td style="width: 80%; text-align: center;">
+                            <button id="haut" class="btn btn-primary" onclick="barre('imgMaison/haut.PNG')">↑</button>
+                        </td>
+
+                        <td style="width: 10%;"></td>
+                    </tr>
+
+                    <tr>
+                        <td style="width: 10%; text-align: center;">
+                            <button id="gauche" class="btn btn-primary" onclick="barre('imgMaison/gauche.PNG')">←</button>
+                        </td>
+
+                        <td style="width: 80%; text-align: center;height: 200px;">
+                            <img id="image" src="" width="200" height="200">
+                        </td>
+
+                        <td style="width: 10%;text-align: center;">
+                            <button id="droite" class="btn btn-primary" onclick="barre('imgMaison/droite.PNG')">→</button>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td style="width: 10%;"></td>
+
+                        <td style="width: 80%; text-align: center;">
+                            <button id="bas" class="btn btn-primary" onclick="barre('imgMaison/bas.PNG')" >↓</button>
+                        </td>
+
+                        <td style="width: 10%;"></td>
+                    </tr>
+                </table>
+                <br>
+
+                <div class="progress" style="width: 99%;">
+                    <progress id="barre" value="0" class="col-12" max="33"></progress>
+                </div><br>
+
+                
+            </div>
+
+            <!-- ligne vereticale -->
+            <span style=" float:left; border-left: 2px solid #000;display: inline-block;height: 70%;margin-top: 10%;"></span>
+            
+            <!-- partie droite -->
+            <div class="" style="float: left; width: 38%; margin-top: 15%; margin-left: 0.25%;">
+                <h5>Ce test a pour but de controler votre niveau d'acuité visuelle </h5>
+                <hr style="width: 99%; border-width: 3px; padding: 2%;">
+
+                <h5>Placez vous d'un mètre de l'écran
+                <hr style="width: 99%; border-width: 3px;">
+
+                <h5>Enlever vos lunettes</h5>
+                <hr style="width: 99%; border-width: 3px;">
+
+                <h5>Indiquer la direction de l'objet</h5>
+            </div>
+        </div>
+    </body>
+</html>

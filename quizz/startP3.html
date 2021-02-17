@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>quizz</title>
+        <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+
+        <script type="text/javascript">
+                // tableau des nombres
+            var nombres = ["imgNombres/2.jpg","imgNombres/8.jpg","imgNombres/15.jpg","imgNombres/16.jpg","imgNombres/35.jpg","imgNombres/73.jpg","imgNombres/74.jpg"];
+            var dict = {
+                "imgNombres/2.jpg":"2",
+                "imgNombres/8.jpg":"8",
+                "imgNombres/15.jpg":"15",
+                "imgNombres/16.jpg":"16",
+                "imgNombres/35.jpg":"35",
+                "imgNombres/73.jpg":"73",
+                "imgNombres/74.jpg":"74"
+            };
+
+            var couleur = 0;
+
+            function start(){
+                var r = Math.floor((Math.random() * 7));
+                var x= document.getElementById('image');
+                x.setAttribute("src",nombres[r]);
+            }
+
+                function getPar(){
+                    let params = new URLSearchParams(document.location.search.substring(1));
+                if (params != null) {
+                    let AV = parseInt(params.get("av"));
+                    let CON = parseInt(params.get("con"));
+                    let COUL = parseInt(params.get("couleur"));
+                    let VP = parseInt(params.get("vp"));
+                    let valbarre = parseInt(params.get("barre"));
+                    document.getElementById('barre').value = valbarre;
+               }
+                }
+
+                    // fonction qui gère les evenements
+                function testNombre(){
+
+                    var b = document.getElementById('barre').value;
+
+                    var entree = document.getElementById('nombre').value;
+
+                    var idImage = document.getElementById('image');
+                    var srcImage = idImage.getAttribute("src");
+
+
+                        // tester si une réponse est juste 
+                    for(var key in dict){
+                        if(key == srcImage && dict[key]==entree){
+                            couleur= couleur+1;
+                        }
+                    }
+
+                   
+                        // si ciq tests sont faits 
+                    if(b==22){
+                        let params = new URLSearchParams(document.location.search.substring(1));
+                        let AV = parseInt(params.get("av"));
+                        let CON = parseInt(params.get("con"));
+
+                        // Redirection vers la 3 eme partie 
+                        document.location.href="./HomePartieQuatre.html?av="+AV+"&con="+CON+"&couleur="+couleur+"&vp=0&barre="+b;
+                    }
+                       
+
+                    var at = document.getElementById('barre');
+                    b = b+1;
+                    at.setAttribute("value",b);
+    
+                    
+                    start();
+                    document.getElementById('nombre').value="";
+                    
+                }
+        </script>
+    </head>
+    <body onload="start(); getPar();">
+        <div class="container">
+
+            <!-- partie gauche -->
+            <div class="" style="float: left; width: 60%; margin-top: 10%;">
+                <h5><u>Consigne</u>: Entrez le numéro que vous voyez dans le cercle </h5><br>
+                
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width: 10%;"></td>
+                        <td style="width: 80%; text-align: center;"></td>
+                        <td style="width: 10%;"></td>
+                    </tr>
+
+                    <tr>
+                        <td style="width: 10%; text-align: center;"></td>
+                        <td style="width: 80%; text-align: center;height: 200px;">
+                            <img id="image" src="" width="200" height="200">
+                        </td>
+                        <td style="width: 10%;text-align: center;"></td>
+                    </tr>
+
+
+                    <tr>
+                        <td style="width: 10%;"></td>
+
+                        <td style="width: 80%; text-align: center;">
+                            <br><input type="number" name="entree" value="" placeholder="entrer le numéro sur l'image" id="nombre" class="col-lg-6">
+                        </td>
+
+                        <td style="width: 10%;"></td>
+                    </tr>
+
+                    <tr>
+                        <td style="width: 10%;"></td>
+
+                        <td style="width: 80%; text-align: center;">
+                            <br><button class="btn btn-danger col-lg-4" onclick="testNombre()" >Valider</button>
+                        </td>
+
+                        <td style="width: 10%;"></td>
+                    </tr>
+                </table>
+                <br>
+
+                <div class="progress" style="width: 99%;">
+                    <progress id="barre" value="0" class="col-12" max="33"></progress>
+                </div><br>
+
+                
+            </div>
+
+            <!-- ligne vereticale -->
+            <span style=" float:left; border-left: 2px solid #000;display: inline-block;height: 70%;margin-top: 10%;"></span>
+            
+            <!-- partie droite -->
+            <div class="" style="float: left; width: 38%; margin-top: 15%; margin-left: 0.25%;">
+                <h5>Ce test a pour but de controler votre niveau d'acuité visuelle </h5>
+                <hr style="width: 99%; border-width: 3px; padding: 2%;">
+
+                <h5>Placez vous d'un mètre de l'écran
+                <hr style="width: 99%; border-width: 3px;">
+
+                <h5>Enlever vos lunettes</h5>
+                <hr style="width: 99%; border-width: 3px;">
+
+                <h5>Indiquer la direction de l'objet</h5>
+            </div>
+        </div>
+    </body>
+</html>

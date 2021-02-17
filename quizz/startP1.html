@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Test d'acuité visuelle</title>
+        <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+
+        <script type="text/javascript">
+            var w = 200;
+            var h = 200;
+
+            var AV = 0;
+
+                // fonction appelée au chargement de la page
+            function start(){
+                    // tableau de liens des images 
+                var cheminee = ["imgMaison/haut.PNG","imgMaison/droite.PNG","imgMaison/bas.PNG","imgMaison/gauche.PNG"];
+
+                    // selectionner une image aléatoirement 
+                    // on a 4 directions, donc 4 images 
+                var r = Math.floor((Math.random() * 4));
+                var x= document.getElementById('image');
+                x.setAttribute("src",cheminee[r]);
+                }
+
+                    // fonction appelée à chaque clique sur les 4 buttons
+                function barre(element){
+                        // rétricision de l'image
+                    w = w/1.3; h = h/1.3;
+
+                        // récupération de la value de la barre de progression 
+                    var v = document.getElementById('barre').value;
+
+                    // si la valeur de la barre a atteint 5, c-a-d: on a passé 5 test, on s'arrete, et on envoie le résultat de test et le niveau de la barre 
+                    if (v == 9) { 
+                        var valbarre = document.getElementById('barre').value;
+                        // Redirection vers la 2 eme partie
+                        document.location.href="./HomePartieDeux.html?av="+AV+"&barre="+valbarre+"&con=0&couleur=0&vp=0";
+                    }
+
+                    // incrémenter la barre de progression
+                    var at = document.getElementById('barre');
+                    v = v+1;
+                    at.setAttribute("value",v);
+
+                    var x= document.getElementById('image');
+
+                        // réduire la taille de l'image
+                    x.setAttribute("width",w);
+                    x.setAttribute("height",h);
+
+                        // incrémenter le résultat de test s'il est juste
+                    var sour = x.getAttribute("src");
+                    if (element== sour) { AV = AV+1;}
+
+                    // appeller la méthode start pour générer une image de direction aléatoire 
+                    start();
+                    
+                }
+        </script>
+    </head>
+    <body onload="start()">
+        <div class="container">
+            <!-- partie gauche -->
+            <div class="" style="float: left; width: 60%; margin-top: 10%;">
+                <h5><u>Consigne</u>: Indiquer la direction de la cheminée de la maison</h5><br>
+                
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width: 10%;"></td>
+
+                        <td style="width: 80%; text-align: center;">
+                            <button id="haut" class="btn btn-primary" onclick="barre('imgMaison/haut.PNG')">↑</button>
+                        </td>
+
+                        <td style="width: 10%;"></td>
+                    </tr>
+
+                    <tr>
+                        <td style="width: 10%; text-align: center;">
+                            <button id="gauche" class="btn btn-primary" onclick="barre('imgMaison/gauche.PNG')">←</button>
+                        </td>
+
+                        <td style="width: 80%; text-align: center;height: 200px;">
+                            <img id="image" src="" width="200" height="200">
+                        </td>
+
+                        <td style="width: 10%;text-align: center;">
+                            <button id="droite" class="btn btn-primary" onclick="barre('imgMaison/droite.PNG')">→</button>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td style="width: 10%;"></td>
+
+                        <td style="width: 80%; text-align: center;">
+                            <button id="bas" class="btn btn-primary" onclick="barre('imgMaison/bas.PNG')" >↓</button>
+                        </td>
+
+                        <td style="width: 10%;"></td>
+                    </tr>
+                </table>
+                <br>
+
+                <div class="progress" style="width: 99%;">
+                    <progress id="barre" value="0" class="col-12" max="13"></progress>
+                </div><br>
+
+                
+            </div>
+
+            <!-- ligne vereticale -->
+            <span style=" float:left; border-left: 2px solid #000;display: inline-block;height: 70%;margin-top: 10%;"></span>
+            
+            <!-- partie droite -->
+            <div class="" style="float: left; width: 38%; margin-top: 15%; margin-left: 0.25%;">
+                <h5>Ce test a pour but de controler votre niveau d'acuité visuelle </h5>
+                <hr style="width: 99%; border-width: 3px; padding: 2%;">
+
+                <h5>Placez vous d'un mètre de l'écran
+                <hr style="width: 99%; border-width: 3px;">
+
+                <h5>Enlever vos lunettes</h5>
+                <hr style="width: 99%; border-width: 3px;">
+
+                <h5>Indiquer la direction de l'objet</h5>
+            </div>
+        </div>
+    </body>
+</html>
